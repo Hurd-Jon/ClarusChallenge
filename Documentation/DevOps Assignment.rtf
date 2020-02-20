@@ -1,0 +1,136 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialMT;
+\f3\fmodern\fcharset0 CourierNewPSMT;\f4\fswiss\fcharset0 Arial-ItalicMT;\f5\fswiss\fcharset0 Arial-BoldItalicMT;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue135;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c52941;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww26420\viewh12440\viewkind0
+\deftab720
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs32 \cf0 Log Analysis
+\f1\b0\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 Log analysis is just part of the fun we have here at ClarusONE, the supplied log file is a real-world snippet of a production Apache log from an image server, the log is formatted according to the following Apache 2.2 log format specification:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f3\fs26 \cf0 LogFormat "%\{X-Forwarded-For\}i %l %u %t \\"%r\\" %>s %b \\"%\{Referer\}i\\" \\"%\{User-Agent\}i\\" %\{imagereader_source\}n %\{php_time_microsec\}n %D" combined
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 Using your favourite technique be it straight up UNIX command pipelines, scripting (any language) or a third party tool, analyze the log to answer the following questions:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 Please submit the answer and any commands or code used to derive the answer:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 You\'92ll find the log file here: {\field{\*\fldinst{HYPERLINK "https://gist.github.com/b9087ca0bcc4dfee1ba2"}}{\fldrslt \cf2 \ul \ulc2 https://gist.github.com/b9087ca0bcc4dfee1ba2}}
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl280\partightenfactor0
+\ls1\ilvl0
+\f2\fs26 \cf0 {\listtext	1.	}How many requests were successful?\uc0\u8232 
+\fs30 \
+\ls1\ilvl0
+\fs26 {\listtext	2.	}Were any of the requests unsuccessful? if so list the requested object URI and the reason the request was unsuccessful?\uc0\u8232 
+\fs30 \
+\ls1\ilvl0
+\fs26 {\listtext	3.	}How many unique IP addresses made requests to this server? (
+\f4\i tip
+\f2\i0 : you can use the first address of the X-Forwarded-For header)\uc0\u8232 
+\fs30 \
+\ls1\ilvl0
+\fs26 {\listtext	4.	}What was the largest object served?\uc0\u8232 
+\fs30 \
+\ls1\ilvl0
+\fs26 {\listtext	5.	}What was the average size of objects successfully served?
+\fs30 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f5\i\b\fs26 \cf0 Advanced Fu Note:
+\f2\i0\b0  as an FYI 
+\f3 imagereader_source
+\f2  and 
+\f3 php_time_microsec
+\f2  are specific to our environment and are inserted as Apache notes.
+\f1\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 \page \pard\pardeftab720\sl260\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs32 \cf0 Text Processing/Scripting Bonus Question
+\f1\b0\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 As part of a security initiative, we plan to correlate client IP addresses we\'92ve identified attempting XSS and SQL injection requests, against the Internet Storm Center\'92s published list of hostile source IP addresses.
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 The ISC makes an ASCII feed of the top 100 report available via HTTP, you can find it at this URL:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "http://isc.sans.org/ipsascii.html"}}{\fldrslt 
+\f2\fs26 \cf2 \ul \ulc2 http://isc.sans.org/ipsascii.html}}\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 The system doing the correlation expects the lookup table to be in comma seperated value format.
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 You\'92re mission is to write a small shell script to perform the following:
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl280\partightenfactor0
+\ls2\ilvl0
+\f2\fs26 \cf0 {\listtext	1.	}fetch the report from {\field{\*\fldinst{HYPERLINK "http://isc.sans.org/ipsascii.html"}}{\fldrslt \cf2 \ul \ulc2 http://isc.sans.org/ipsascii.html}}\
+{\listtext	2.	}generate a new file containing a header row identifying the fields\
+{\listtext	3.	}remove all comments\
+{\listtext	4.	}each input line should then be output reformatted as CSV\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0\b\fs26 \cf0 \ul \ulc0 One thing to note
+\f2\b0 \ulnone : the IP addresses in the original ISC report are padded with zeros to aid sorting, the CSV output your script generates must remove the zero padding from each octet.
+\f1\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2\fs26 \cf0 Please provide the code for your script.}
