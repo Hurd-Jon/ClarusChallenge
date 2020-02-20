@@ -10,10 +10,14 @@ Having said that it has been a few years since i used python or ruby and my rege
 I used C# and regex where needed to get the tasks done.
 C# is the language I am most familiar with.
 
+
 ## Task One : Apache Log Parsing
 
 The problem with this task was coming up with a set of regex patterns to make sense of the Apache log data.
 Its not the friendliest log file I have dealt with.
+
+The biggest issue with this challenge is coping with the different numbers of IP addresses at the start of the file.
+Some rows have none, some have two, some have three and some have four
 
 Once the log file is nicely parsed the rest of the challenge was easy enough to handle with LINQ
 
