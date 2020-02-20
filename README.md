@@ -23,7 +23,7 @@ Once the log file is nicely parsed the rest of the challenge was easy enough to 
 
 The Output for the file is in a sample log file in the TaskOne/SampleOutput folder
 
-## Task Two : Parsing a file / Writing out to a csv / Removing Octet padding
+## Task Two : Parsing a file / Removing comments / Writing out to a csv / Removing Octet padding
 
 Reading the file and writing it out in a new format was fine.
 
