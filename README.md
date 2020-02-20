@@ -1,4 +1,4 @@
-# ClarusChallenge
+# Clarus DevOps Challenge
 
 ## Overview
 
